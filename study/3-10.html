@@ -1,0 +1,43 @@
+<!-- event bus -->
+<html>
+<head>
+  <title>Vue Instance Lifecycle</title>
+</head>
+<body>
+
+<div id="app">
+
+<child-component></child-component>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dis/vue.js"></script>
+<script>
+
+const eventBus = new Vue();
+
+Vue.component('child-component',{
+template : `<div>
+Area of Sub component.
+<button v-on:click="showLog">show</button>
+</div>`,
+methods:{
+showLog: function(){
+eventBus.$emit('triggerEventBus',100);
+}
+}
+})
+
+const app = new Vue({
+el : '#app',
+created : function(){
+eventBus.$on('triggerEventBus',function(value){
+console.log("Received Value : ", value)
+})
+}
+})
+
+</script>
+</body>
+
+</html>

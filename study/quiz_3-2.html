@@ -1,0 +1,37 @@
+<html>
+<head>
+  <title>Vue Instance Lifecycle</title>
+</head>
+<body>
+
+<div id="app">
+<todo-list></todo-list>
+{{message}}
+<todo-footer></todo-footer>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dis/vue.js"></script>
+<script>
+
+Vue.component('todo-footer',{
+template : '<p>This is another global child component</p>'
+})
+
+const todocmp = {
+template : '<p>This is another local child component</p>'
+}
+
+new Vue({
+el:'#app',
+components : {
+'todo-list' : todocmp
+},
+data : {
+message : 'This is a parent component'
+}
+})
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<html>
+<head>
+</head>
+<body>
+
+<div id="app">
+<p>{{message}}</p>
+<button v-on:click="reverseMsg">reverse Messge</button>
+<input v-model="message">
+</div>
+
+<script>
+
+new Vue({
+el : '#app',
+
+data:{
+	message : 'Hello Vue.js'
+},
+	methods : {
+	reverseMsg(){
+  this.message = this.message.split('').reverse().join('');
+  return this.message;
+  },
+  
+	watch:{
+  message : function(data){
+  console.log('value of message will change :',data)
+  }
+  }
+}
+})
+
+</script>
+</body>
+
+</html>

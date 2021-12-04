@@ -1,0 +1,44 @@
+<html>
+<head>
+</head>
+<body>
+
+<div id="app">
+<a v-if="flag">do it Vue.js</a>
+<ul>
+<li v-for="system in systems">{{ system }}</li>
+</ul>
+<p v-show="flag">do it Vue.js</p>
+<h5 v-bind:id="uid">Vue Beginner</h5>
+<button v-on:click="popupAlert">Alert Button</button>
+<button v-on:click="clickBtn(10)">Click</button>
+<button v-on:click="clickBtn2">event Click</button>
+</div>
+
+<script>
+
+new Vue({
+el : '#app',
+
+data:{
+flag:true,
+systems : ['android','ios','window'],
+uid : 10
+},
+	methods : {
+  popupAlert : function(){
+  return alert('alert!')
+  },
+  clickBtn:function(num){
+  alert('clicked'+num+'times');
+  },
+  clickBtn2:function(event){
+	console.log(event);
+  }
+  }
+})
+
+</script>
+</body>
+
+</html>

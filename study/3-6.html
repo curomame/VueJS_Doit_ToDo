@@ -1,0 +1,48 @@
+<html>
+<head>
+  <title>Vue Instance Lifecycle</title>
+</head>
+<body>
+
+<div id="app">
+<h3>
+First Instance Area
+</h3>
+<my-global-component></my-global-component>
+<my-local-component></my-local-component>
+</div>
+
+<div id="app2">
+<h3>
+Second Instance Area
+</h3>
+<my-global-component></my-global-component>
+<my-local-component></my-local-component>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dis/vue.js"></script>
+<script>
+
+const cmp = {
+template : "<div>Local Component was enrolled</div>"
+}
+
+Vue.component('my-global-component', {
+template : '<div>Global Component was enrolled</div>'
+})
+
+new Vue({
+el : '#app',
+components : {
+'my-local-component':cmp
+}
+})
+
+new Vue({
+el : '#app2'
+})
+
+</script>
+</body>
+
+</html>
